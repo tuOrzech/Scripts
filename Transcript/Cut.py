@@ -26,6 +26,6 @@ def split_mp3(file_path, chunk_length_in_sec=720):  # Ustawienie na 12 minut (72
     return chunks
 
 # Użyj funkcji, aby podzielić plik
-chunks = split_mp3("/Users/Kaczor/Desktop/Test/131.mp3")
+chunks = split_mp3("path_to_your_file.mp3")
 
 print(f"Plik został podzielony na {len(chunks)} fragmentów.")

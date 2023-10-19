@@ -16,7 +16,7 @@ def transcribe(audio_file_path, options):
 
 
   
-filepath = '/Users/Kaczor/Desktop/Test/chunk3.mp3'
+filepath = 'path_to_your_file.mp3'
 
 def generate_corrected_transcript(temperature, system_prompt, audio_file):
     print("Poprawianie transkrypcji przy użyciu modelu GPT-4...")
