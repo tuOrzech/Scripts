@@ -109,46 +109,9 @@ export OPENAI_API_KEY='your_api_key_here'
 
 ## Podział dużych plików audio
 
-Jeśli plik audio przekracza limit 25MB, możemy podzielić go na mniejsze kawałki, aby przetworzyć każdy fragment osobno.
-Poniżej znajduje się kod, który pozwala podzielić plik audio na fragmenty o długości 12 minut (720 sekund) każdy:
-
-```python
-
-from pydub import AudioSegment
-
-def split_mp3(file_path, chunk_length_in_sec=720):  # Ustawienie na 12 minut (720 sekund)
-    audio = AudioSegment.from_mp3(file_path)
-
-    # Długość pliku audio w milisekundach
-    length_audio = len(audio)
-
-    # Liczba fragmentów
-    num_chunks = int(length_audio / (chunk_length_in_sec * 1000)) + 1
-
-    chunks = []
-
-    for i in range(num_chunks):
-        start_time = i * chunk_length_in_sec * 1000
-        end_time = (i + 1) * chunk_length_in_sec * 1000
-
-        # Tworzenie fragmentu
-        chunk = audio[start_time:end_time]
-
-        # Zapisanie fragmentu do pliku
-        chunk_name = f"chunk{i}.mp3"
-        chunk.export(chunk_name, format="mp3")
-        chunks.append(chunk_name)
-
-    return chunks
-
-
-```
-
-## Pamiętaj, aby zainstalować bibliotekę pydub oraz ffmpeg przed użyciem powyższego kodu.
-
-## Podział dużych plików audio
-
 Jeśli plik audio przekracza limit 25MB, możemy podzielić go na mniejsze kawałki, aby przetworzyć każdy fragment osobno. Poniżej znajduje się kod, który pozwala podzielić plik audio na fragmenty o długości 12 minut (720 sekund) każdy:
+
+### Pamiętaj, aby zainstalować bibliotekę pydub oraz ffmpeg przed użyciem kodu.
 
 ```python
 from pydub import AudioSegment
@@ -209,8 +172,6 @@ with open(output_file, 'w', encoding='utf-8') as outfile:
 ```
 
 Po uruchomieniu powyższego skryptu otrzymasz plik o nazwie `caly_transkrypt.txt`, który zawiera połączoną treść wszystkich plików z listy `files_to_merge.`
-
-# Instrukcje dotyczące `ffmpeg`
 
 ## Instalacja `ffmpeg` Dla macOS (zakładając, że masz zainstalowane Homebrew):
 
